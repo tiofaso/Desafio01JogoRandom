@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class JogoAleatorio {
     public static void main(String[] args){
-        System.out.println("---------------------------------------");
-        System.out.println("| Vamos brincar de adivinhar números? |");
-        System.out.println("---------------------------------------");
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("|           Vamos brincar de adivinhar números?           |");
+        System.out.println("+---------------------------------------------------------+");
 
         //Pegando número digitado pelo usuário
-        System.out.println("Escolha um dos números para selecionar a dificuldade:");
+        System.out.println("\nEscolha um dos números para selecionar a dificuldade:");
         System.out.println("1 Easy  |  2 Medium  | 3 Hard  | 4 Joy has no mercy");
         Scanner entrada = new Scanner(System.in);
         int numeroUsuario = entrada.nextInt();
@@ -18,9 +18,9 @@ public class JogoAleatorio {
             int numErrado = 1;
             while(numErrado == 1) {
 
-                System.out.println("---------------------------------------");
-                System.out.println("AVISO! É preciso escolher um grau de dificuldade válido.");
-                System.out.println("---------------------------------------\n");
+                System.out.println("+---------------------------------------------------------+");
+                System.out.println("| AVISO! É preciso escolher um grau de dificuldade válido |");
+                System.out.println("+---------------------------------------------------------+\n");
 
                 System.out.println("Escolha um dos números para selecionar a dificuldade:");
                 System.out.println("1 Easy  |  2 Medium  | 3 Hard  | 4 Joy has no mercy");
@@ -32,7 +32,7 @@ public class JogoAleatorio {
             }
         }
 
-        System.out.println("\n---------------------------------------");
+        System.out.println("\n---------------------------------------------------------");
 
         //Definindo o grau de dificuldade da partida
         int numDificuldade = numeroUsuario;
@@ -56,10 +56,13 @@ public class JogoAleatorio {
                 msgNivel = "JOY HAS NO MERCY";
                 break;
         }
-
+        //Setando variáveis
         String msgExit = "n"; //flag para interromper o jogo
         int numScore = 0; //score do jogo
         int numJogadas = 0; //numero de vezes que o usuário jogou
+        int contSaida = 0; //contador de jogadas para mostrar ao usuário a opção de sair
+        String fgMsgExit = "\u001B[31m"; //Cor do texto de escolha para sair
+        String fgMsgTab = "\u001B[30m"; //Cor do texto da tabela
 
         //Histórico de jogadas do usuário e do computador
         ArrayList<Integer> jogadaUsr = new ArrayList<>();
@@ -69,7 +72,7 @@ public class JogoAleatorio {
 
         do{
 
-            System.out.println("Digite um número [" + msgNivel + "]:");
+            System.out.println("\nDigite um número [" + msgNivel + "]:");
             numeroUsuario = entrada.nextInt();
 
             //Separando o número digitado pelo usuário para comparação
@@ -101,36 +104,43 @@ public class JogoAleatorio {
                 jogadaPonto.add(numPontosInstantaneo);
             }
 
-            System.out.println("Você digitou " + numeroUsuario);
+            System.out.println("\nVocê digitou " + numeroUsuario);
             System.out.println("O computador selecionou o número " + numRandom);
             System.out.println("Você ganhou " + numPontosInstantaneo + " pontos");
 
-            System.out.println("\n\n> Deseja sair? [S/N]");
-            msgExit = entrada.next();
-
-
-
-
+            if(contSaida == 4){//Após cinco jogadas pergunta se o usuário quer parar
+                contSaida = 0;
+                System.out.println("\n"+ fgMsgExit + "> Deseja sair? [S/N]");
+                msgExit = entrada.next();
+            }else{contSaida++;}
 
         }while (msgExit.equals("n") || msgExit.equals("N"));
-
-        System.out.println("\n----------------------");
-        System.out.println("Seu score final é de " + numScore + " pontos");
-        System.out.println("As suas jogadas foram: " + jogadaUsr);
-        System.out.println("As jogadas do computador: " + jogadaComp);
 
         //exibindo o histórico de jogadas e sua pontuação
         int contHistoricoMax = jogadaUsr.size();
         int contHistorico = 0;
+        String tabelaHistorico = "|  %-12s  |    %-6d    |    %-6d    |    %-4d  |%n";
 
-        System.out.println("\nHistórico de jogadas");
+        //System.out.println("\nHistórico de jogadas");
+        System.out.format(fgMsgTab + "+---------------------------------------------------------+%n");
+        System.out.format("|                   HISTÓRICO DE JOGADAS                  |%n");
+        System.out.format("+---------------------------------------------------------+%n");
+        System.out.format("|    jogadas     |  computador  |    usuário   |  pontos  |%n");
+        System.out.format("+----------------|--------------|--------------|----------|%n");
+
         while(contHistorico < contHistoricoMax){
-            System.out.println("Jogada n°" + contHistorico);
-            System.out.println("Computador jogou: " + jogadaComp.get(contHistorico));
-            System.out.println("Você jogou: " + jogadaUsr.get(contHistorico));
-            System.out.println("Nessa jogada você recebeu "+ jogadaPonto.get(contHistorico)  + " pontos\n");
+
+            System.out.format(tabelaHistorico, " jogada n°" + contHistorico,jogadaComp.get(contHistorico),jogadaUsr.get(contHistorico), jogadaPonto.get(contHistorico)  );
+//            System.out.println("Jogada n°" + contHistorico);
+//            System.out.println("Computador jogou: " + jogadaComp.get(contHistorico));
+//            System.out.println("Você jogou: " + jogadaUsr.get(contHistorico));
+//            System.out.println("Nessa jogada você recebeu "+ jogadaPonto.get(contHistorico)  + " pontos\n");
             contHistorico++;
         }
+        System.out.format("+---------------------------------------------------------+%n");
+        System.out.println("Seu score final é de: " + numScore + " pontos");
+        System.out.println("As suas jogadas foram: " + jogadaUsr);
+        System.out.println("As jogadas do computador: " + jogadaComp);
 
     }
 }
