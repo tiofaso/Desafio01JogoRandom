@@ -19,5 +19,9 @@ A cada jogada o usuário pode ganhar:
 O sistema também guarda o seu histórico de jogadas, pontuação e o que o computador respondeu.
 
 ## Atualizações
-Última atualização 06/06/23 @ 14:25
-- Agora o sistema permite escolher os caracteres **S** (SIM) ou **N** (NÃO) para permitir que o usuário interrompa a jogatina. (06/06/2023)
+Última atualização 06/06/23 @ 15:31
+- Os valores das jogadas realizadas agora são exibidas em uma tabela.
+- Agora ao invés de perguntar a cada jogada se o usuário deseja sair, o jogo exibe a mensagem a cada 5 partidas
+- Foi implementado recursos de cor para diferenciar a mensagem para continuar ou não o jogo.
+- Pequenas implementações na diagramação do textos foram feitas.
+- Agora o sistema permite escolher os caracteres **S** (SIM) ou **N** (NÃO) para permitir que o usuário interrompa a jogatina.
