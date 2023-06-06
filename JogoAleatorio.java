@@ -57,7 +57,7 @@ public class JogoAleatorio {
                 break;
         }
 
-        int msgExit = 0; //flag para interromper o jogo
+        String msgExit = "n"; //flag para interromper o jogo
         int numScore = 0; //score do jogo
         int numJogadas = 0; //numero de vezes que o usuário jogou
 
@@ -67,7 +67,7 @@ public class JogoAleatorio {
         ArrayList<Integer> jogadaPonto = new ArrayList<>();
 
 
-        while (msgExit == 0){
+        do{
 
             System.out.println("Digite um número [" + msgNivel + "]:");
             numeroUsuario = entrada.nextInt();
@@ -105,15 +105,14 @@ public class JogoAleatorio {
             System.out.println("O computador selecionou o número " + numRandom);
             System.out.println("Você ganhou " + numPontosInstantaneo + " pontos");
 
-            System.out.println("\n\n> Deseja sair? [1 para sair / 0 para continuar]");
-            msgExit = entrada.nextInt();
-
-            if(msgExit > 1 ){msgExit = 0;}
-            else if(msgExit < 1 ){msgExit = 0;}
+            System.out.println("\n\n> Deseja sair? [S/N]");
+            msgExit = entrada.next();
 
 
 
-        }
+
+
+        }while (msgExit.equals("n") || msgExit.equals("N"));
 
         System.out.println("\n----------------------");
         System.out.println("Seu score final é de " + numScore + " pontos");
@@ -132,10 +131,6 @@ public class JogoAleatorio {
             System.out.println("Nessa jogada você recebeu "+ jogadaPonto.get(contHistorico)  + " pontos\n");
             contHistorico++;
         }
-
-
-
-
 
     }
 }
