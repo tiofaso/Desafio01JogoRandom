@@ -1,5 +1,6 @@
-
 # Desafio 01 de Java
+> **Nota**
+> Veja o final do README para notas de atualização
 
 Nesse desafio o usuário digita um número qualquer tentando advinhar qual o computador irá escolher aleatoriamente.
 
@@ -16,3 +17,7 @@ A cada jogada o usuário pode ganhar:
 - **0 (zero)** pontos se você for a *vergonha da profisson!*
 
 O sistema também guarda o seu histórico de jogadas, pontuação e o que o computador respondeu.
+
+## Atualizações
+Última atualização 06/06/23 @ 14:25
+- Agora o sistema permite escolher os caracteres **S** (SIM) ou **N** (NÃO) para permitir que o usuário interrompa a jogatina. (06/06/2023)
