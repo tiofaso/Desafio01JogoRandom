@@ -42,18 +42,22 @@ public class JogoAleatorio {
             case 1:
                 System.out.println("Você escolheu o nível EASY. Escolha entre 0 - 10 números");
                 msgNivel = "EASY";
+                numDificuldade = 10;
                 break;
             case 2:
                 System.out.println("Você escolheu o nível MEDIUM. Escolha entre 0 - 100 números");
                 msgNivel = "MEDIUM";
+                numDificuldade = 100;
                 break;
             case 3:
                 System.out.println("Você escolheu o nível HARD. Escolha entre 0 - 1000 números");
                 msgNivel = "HARD";
+                numDificuldade = 1000;
                 break;
             case 4:
                 System.out.println("Você escolheu o nível JOY HAS NO MERCY. Escolha entre 0 - 10000 números");
                 msgNivel = "JOY HAS NO MERCY";
+                numDificuldade = 10000;
                 break;
         }
         //Setando variáveis
@@ -81,7 +85,7 @@ public class JogoAleatorio {
             int numPontosInstantaneo = 0; //flag para informar quanto o jogador ganhou naquele instante
 
             //Gerando números aleatórios
-            int numRandom = (int) (Math.random() * (numeroUsuario+1));
+            int numRandom = (int) (Math.random() * (numDificuldade+1));
 
             //Adicionando dados ao histórico
             jogadaUsr.add(numeroUsuario);
