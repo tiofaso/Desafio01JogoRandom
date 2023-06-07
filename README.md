@@ -19,7 +19,8 @@ A cada jogada o usuário pode ganhar:
 O sistema também guarda o seu histórico de jogadas, pontuação e o que o computador respondeu.
 
 ## Atualizações
-Última atualização 06/06/23 @ 15:31
+Última atualização 07/06/23 @ 10:15
+- O cáculo da dificuldade estava rodando de forma errada. Apesar de funcionar como deveria, o valor era dinâmico e não fixo.
 - Os valores das jogadas realizadas agora são exibidas em uma tabela.
 - Agora ao invés de perguntar a cada jogada se o usuário deseja sair, o jogo exibe a mensagem a cada 5 partidas
 - Foi implementado recursos de cor para diferenciar a mensagem para continuar ou não o jogo.
